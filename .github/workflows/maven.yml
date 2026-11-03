@@ -33,3 +33,4 @@ jobs:
         with:
           name: projeto-compilado
           path: target/*.war
+          if-no-files-found: error
