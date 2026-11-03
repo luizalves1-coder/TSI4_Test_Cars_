@@ -149,12 +149,14 @@ class CarroControllerTest {
     }
 
     @Test
-    void deveRetornarErroParaPayloadInvalido() throws Exception {
-        mockMvc.perform(post("/carro/updateCarro")
-                        .contentType(MediaType.TEXT_PLAIN)
-                        .content("Civic"))
-                .andExpect(status().is5xxServerError());
-    }
+void deveRetornarErroParaPayloadInvalido() throws Exception {
+    mockMvc.perform(post("/carro/updateCarro")
+            .contentType(MediaType.TEXT_PLAIN)
+            .content("Civic"))
+            .andExpect(status().isBadRequest())
+            .andExpect(jsonPath("$.erro")
+                    .value("Payload inválido. Use modelo,preco."));
+}
 
     @Test
     void deveRetornarBomDia() throws Exception {
