@@ -27,3 +27,9 @@ jobs:
 
       - name: Compilar e executar testes
         run: ./mvnw -B clean verify
+
+      - name: Disponibilizar arquivo gerado
+        uses: actions/upload-artifact@v4
+        with:
+          name: projeto-compilado
+          path: target/*.war
