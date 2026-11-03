@@ -28,9 +28,13 @@ jobs:
       - name: Compilar e executar testes
         run: ./mvnw -B clean verify
 
-      - name: Disponibilizar arquivo gerado
+      - name: Verificar arquivo gerado
+        run: ls -lh target/
+
+      - name: Disponibilizar arquivo WAR
         uses: actions/upload-artifact@v4
         with:
-          name: projeto-compilado
+          name: LojaCarro-WAR
           path: target/*.war
           if-no-files-found: error
+          retention-days: 7
